@@ -46,11 +46,26 @@ export class TaskService {
     const taskIndex = tasks.findIndex((task) => task.id === taskId);
 
     if (taskIndex === -1) {
-      return null; 
+      return null;
     }
 
     tasks[taskIndex].status = newStatus;
     await this.saveTasksToFile(tasks);
     return tasks[taskIndex];
+  }
+
+  // Method to delete a task by ID
+  async deleteTask(taskId: string): Promise<boolean> {
+    const tasks = await this.loadTasksFromFile();
+    const initialLength = tasks.length;
+
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+
+    if (updatedTasks.length === initialLength) {
+      return false; // Task not found
+    }
+
+    await this.saveTasksToFile(updatedTasks);
+    return true;
   }
 }

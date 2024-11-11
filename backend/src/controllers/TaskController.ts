@@ -59,3 +59,21 @@ export const updateTaskStatus = async (req: Request, res: Response): Promise<voi
     res.status(500).json({ error: "Failed to update task status." });
   }
 };
+
+// Handler for deleting a task
+export const deleteTask = async (req: Request, res: Response): Promise<void> => {
+  const { taskId } = req.params;
+
+  try {
+    const isDeleted = await taskService.deleteTask(taskId);
+
+    if (!isDeleted) {
+      res.status(404).json({ message: "Task not found." });
+      return;
+    }
+
+    res.status(200).json({ message: "Task deleted successfully." });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete task." });
+  }
+};
