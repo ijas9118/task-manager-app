@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1731298018667",
+    "userId": "1",
+    "title": "Complete Assignment",
+    "description": "Finish the TypeScript project for the course.",
+    "status": "To Do"
+  },
+  {
+    "id": "1731298062959",
+    "userId": "1",
+    "title": "Learn Typescript",
+    "description": "Learn all concepts of typescript.",
+    "status": "In Progress"
+  }
+]
