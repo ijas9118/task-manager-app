@@ -6,7 +6,7 @@ import { Task, TaskStatus } from "../models/Task";
 export class TaskService {
   private taskFilePath = path.join(__dirname, "../data/tasks.json");
 
-  // Load tasks from the JSON file asynchronously
+  // load tasks
   private async loadTasksFromFile(): Promise<Task[]> {
     try {
       const fileData = await fs.readFile(this.taskFilePath, "utf-8");
@@ -17,7 +17,7 @@ export class TaskService {
     }
   }
 
-  // Save tasks to the JSON file asynchronously
+  // save task
   private async saveTasksToFile(tasks: Task[]): Promise<void> {
     try {
       await fs.writeFile(this.taskFilePath, JSON.stringify(tasks, null, 2));
@@ -62,7 +62,7 @@ export class TaskService {
     const updatedTasks = tasks.filter((task) => task.id !== taskId);
 
     if (updatedTasks.length === initialLength) {
-      return false; // Task not found
+      return false;
     }
 
     await this.saveTasksToFile(updatedTasks);

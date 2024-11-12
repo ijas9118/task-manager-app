@@ -4,7 +4,7 @@ import { Task, TaskStatus } from "../models/Task";
 
 const taskService = new TaskService();
 
-// Handler for creating a new task
+// Create new task
 export const createTask = async (req: Request, res: Response): Promise<void> => {
   const { userId, title, description } = req.body;
 
@@ -22,7 +22,7 @@ export const createTask = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
-// Handler for getting tasks by user
+// Get all task
 export const getUserTasks = async (req: Request, res: Response): Promise<void> => {
   const { userId } = req.params;
 
@@ -38,7 +38,7 @@ export const getUserTasks = async (req: Request, res: Response): Promise<void> =
   }
 };
 
-// Handler for updating task status
+// Update task status
 export const updateTaskStatus = async (req: Request, res: Response): Promise<void> => {
   const { taskId } = req.params;
   const { status } = req.body;
@@ -60,7 +60,7 @@ export const updateTaskStatus = async (req: Request, res: Response): Promise<voi
   }
 };
 
-// Handler for deleting a task
+// Delete task
 export const deleteTask = async (req: Request, res: Response): Promise<void> => {
   const { taskId } = req.params;
 
